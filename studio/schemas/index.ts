@@ -1,0 +1,5 @@
+import project from './project'
+import aboutPage from './aboutPage'
+import siteSettings from './siteSettings'
+
+export const schemaTypes = [project, aboutPage, siteSettings]
