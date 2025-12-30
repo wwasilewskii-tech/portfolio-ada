@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { cn } from '@/lib/utils/cn'
+import { useReducedMotion } from '@/lib/hooks/useReducedMotion'
 
 interface MagneticButtonProps {
   children: React.ReactNode
@@ -15,6 +16,11 @@ interface MagneticButtonProps {
  * Button with magnetic cursor effect - follows cursor when hovering
  *
  * @param intensity - How strongly the button is attracted to cursor (0-1)
+ *
+ * Features:
+ * - Magnetic effect on hover
+ * - Scale animation
+ * - Respects prefers-reduced-motion preference
  */
 export default function MagneticButton({
   children,
@@ -23,8 +29,12 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const [isHovered, setIsHovered] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Skip animations if user prefers reduced motion
+    if (prefersReducedMotion) return
+
     const button = buttonRef.current
     if (!button) return
 
@@ -45,6 +55,10 @@ export default function MagneticButton({
 
   const handleMouseEnter = () => {
     setIsHovered(true)
+
+    // Skip animations if user prefers reduced motion
+    if (prefersReducedMotion) return
+
     const button = buttonRef.current
     if (!button) return
 
@@ -57,6 +71,10 @@ export default function MagneticButton({
 
   const handleMouseLeave = () => {
     setIsHovered(false)
+
+    // Skip animations if user prefers reduced motion
+    if (prefersReducedMotion) return
+
     const button = buttonRef.current
     if (!button) return
 

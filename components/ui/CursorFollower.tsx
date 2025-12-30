@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import { useReducedMotion } from '@/lib/hooks/useReducedMotion'
 
 /**
  * CursorFollower
@@ -11,13 +12,18 @@ import { gsap } from 'gsap'
  * - Smooth following animation
  * - Expands on interactive elements
  * - Hidden on mobile/touch devices
+ * - Respects prefers-reduced-motion preference
  */
 export default function CursorFollower() {
   const cursorRef = useRef<HTMLDivElement>(null)
   const cursorDotRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
+    // Hide if user prefers reduced motion
+    if (prefersReducedMotion) return
+
     // Only show on non-touch devices
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
     if (isTouchDevice) return
@@ -76,7 +82,7 @@ export default function CursorFollower() {
         el.removeEventListener('mouseleave', handleMouseLeaveInteractive)
       })
     }
-  }, [])
+  }, [prefersReducedMotion])
 
   if (!isVisible) return null
 

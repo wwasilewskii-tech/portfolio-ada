@@ -19,9 +19,10 @@ interface ContactSectionProps {
 }
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'),
-  email: z.string().email('Nieprawidłowy adres email'),
-  message: z.string().min(10, 'Wiadomość musi mieć co najmniej 10 znaków'),
+  name: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki').max(100, 'Imię jest za długie'),
+  email: z.string().email('Nieprawidłowy adres email').max(255, 'Email jest za długi'),
+  message: z.string().min(10, 'Wiadomość musi mieć co najmniej 10 znaków').max(5000, 'Wiadomość jest za długa'),
+  honeypot: z.string().optional(), // Hidden field for spam protection
 })
 
 type ContactFormData = z.infer<typeof contactSchema>
@@ -33,6 +34,7 @@ type ContactFormData = z.infer<typeof contactSchema>
 export default function ContactSection({ settings }: ContactSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const {
     register,
@@ -46,6 +48,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setErrorMessage('')
 
     try {
       const response = await fetch('/api/contact', {
@@ -59,9 +62,19 @@ export default function ContactSection({ settings }: ContactSectionProps) {
         reset()
       } else {
         setSubmitStatus('error')
+        const errorData = await response.json()
+
+        if (response.status === 429) {
+          setErrorMessage('Za dużo prób. Spróbuj ponownie za chwilę.')
+        } else if (errorData.error) {
+          setErrorMessage(errorData.error)
+        } else {
+          setErrorMessage('Wystąpił błąd. Spróbuj ponownie.')
+        }
       }
     } catch (error) {
       setSubmitStatus('error')
+      setErrorMessage('Błąd połączenia. Sprawdź internet i spróbuj ponownie.')
     } finally {
       setIsSubmitting(false)
     }
@@ -193,6 +206,17 @@ export default function ContactSection({ settings }: ContactSectionProps) {
                 )}
               </div>
 
+              {/* Honeypot field - hidden from users, filled by bots */}
+              <input
+                {...register('honeypot')}
+                type="text"
+                name="honeypot"
+                tabIndex={-1}
+                autoComplete="off"
+                className="absolute left-0 top-0 h-0 w-0 opacity-0"
+                aria-hidden="true"
+              />
+
               <MagneticButton
                 intensity={0.2}
                 className="w-full rounded-lg bg-yellow-400 px-8 py-4 font-semibold text-navy-900 transition-colors hover:bg-yellow-300 disabled:opacity-50"
@@ -209,7 +233,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
               )}
               {submitStatus === 'error' && (
                 <p className="text-center text-red-400">
-                  Wystąpił błąd. Spróbuj ponownie.
+                  {errorMessage || 'Wystąpił błąd. Spróbuj ponownie.'}
                 </p>
               )}
             </form>

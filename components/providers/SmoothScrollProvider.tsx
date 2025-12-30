@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useReducedMotion } from '@/lib/hooks/useReducedMotion'
 
 // Register GSAP plugin
 if (typeof window !== 'undefined') {
@@ -22,11 +23,18 @@ interface SmoothScrollProviderProps {
  * - Smooth momentum scrolling
  * - Synced with GSAP ScrollTrigger for animations
  * - Custom easing and duration
+ * - Respects prefers-reduced-motion preference
  */
 export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   const lenisRef = useRef<Lenis | null>(null)
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
+    // Skip smooth scrolling if user prefers reduced motion
+    if (prefersReducedMotion) {
+      return
+    }
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
@@ -57,7 +65,7 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
         lenis.raf(time * 1000)
       })
     }
-  }, [])
+  }, [prefersReducedMotion])
 
   return <>{children}</>
 }
