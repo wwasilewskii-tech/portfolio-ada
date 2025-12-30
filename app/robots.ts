@@ -5,7 +5,7 @@ import { MetadataRoute } from 'next'
  * Instructs search engine crawlers which pages to crawl and index
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannarauhut.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannart.pl'
 
   return {
     rules: [

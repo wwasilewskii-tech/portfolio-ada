@@ -8,7 +8,7 @@ import { projectsQuery } from '@/lib/sanity/queries'
  * Dynamically includes all projects from Sanity CMS
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannarauhut.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannart.pl'
 
   // Fetch projects from Sanity
   const projects = await client.fetch(projectsQuery).catch(() => [])

@@ -4,7 +4,7 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import CursorFollower from "@/components/ui/CursorFollower";
 import "./globals.css";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannarauhut.com';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannart.pl';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

@@ -83,7 +83,7 @@ export const SITE_METADATA = {
     'operatorka kamery',
     'Adrianna Rauhut',
   ],
-  url: 'https://adriannarauhut.com', // TODO: Update with real domain
+  url: 'https://adriannart.pl',
   ogImage: '/logo.png',
   locale: 'pl_PL',
 } as const

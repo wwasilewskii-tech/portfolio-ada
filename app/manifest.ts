@@ -6,7 +6,7 @@ import { MetadataRoute } from 'next'
  * Improves mobile SEO and user experience
  */
 export default function manifest(): MetadataRoute.Manifest {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannarauhut.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannart.pl'
 
   return {
     name: 'Adrianna Rauhut - Portfolio',
