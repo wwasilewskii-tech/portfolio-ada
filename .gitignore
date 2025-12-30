@@ -46,3 +46,21 @@ next-env.d.ts
 
 # Production env (keep local only)
 .env.production
+
+# Documentation and local files (keep local only)
+DEPLOYMENT_*.md
+FAZA_*.md
+GITHUB_SETUP_INSTRUCTIONS.md
+INSTRUKCJA_*.md
+INSTRUKCJE_*.md
+JUTRO_*.md
+PLAN.md
+PM2_QUICK_START.md
+SEO_*.md
+SESJA_*.md
+SETUP_*.md
+ecosystem.config.js
+adrianna1.jpg
+
+# Claude Code settings
+.claude/
