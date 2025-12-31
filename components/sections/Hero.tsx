@@ -109,9 +109,9 @@ export default function Hero({ data }: HeroProps) {
           </div>
         </ScrollReveal>
 
-        {/* Minimal scroll indicator */}
+        {/* Minimal scroll indicator - hidden on mobile */}
         <ScrollReveal direction="fade" delay={1.5}>
-          <div className="absolute bottom-16 left-1/2 -translate-x-1/2">
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 hidden sm:block">
             <div className="flex flex-col items-center gap-3">
               <div className="h-12 w-[1px] bg-gradient-to-b from-transparent via-navy-400 to-transparent" />
               <button
