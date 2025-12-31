@@ -57,7 +57,7 @@ export default function Navigation({ className }: NavigationProps) {
           className
         )}
       >
-        <div className="container mx-auto flex items-center justify-between px-6">
+        <div className="container mx-auto flex items-center justify-between px-4 sm:px-6">
           {/* Logo */}
           <Link href="/" className="relative z-50 flex items-center gap-3">
             <div className="relative h-12 w-12 overflow-hidden rounded-full">

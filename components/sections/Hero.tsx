@@ -71,7 +71,7 @@ export default function Hero({ data }: HeroProps) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 py-32 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-20 sm:py-32 text-center">
         <ScrollReveal direction="fade" delay={0.2}>
           <p className="mb-8 text-sm font-medium uppercase tracking-[0.2em] text-navy-500">
             {subtitle}
@@ -85,7 +85,7 @@ export default function Hero({ data }: HeroProps) {
           stagger={0.04}
           delay={0.4}
           triggerOnScroll={false}
-          className="mb-12 font-display text-6xl font-light leading-[1.1] text-navy-900 sm:text-7xl md:text-8xl lg:text-9xl"
+          className="mb-12 font-display text-5xl font-light leading-[1.1] text-navy-900 sm:text-6xl md:text-7xl lg:text-8xl"
         />
 
         <ScrollReveal direction="up" delay={0.8}>

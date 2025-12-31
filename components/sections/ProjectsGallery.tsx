@@ -74,7 +74,7 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
 
   return (
     <section id="projekty" className="bg-white py-20">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <ScrollReveal direction="up">
           <div className="mb-12 text-center">
@@ -109,20 +109,17 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
         </ScrollReveal>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project, index) => (
-            <ScrollReveal
-              key={project._id}
-              direction="up"
-              delay={index * 0.1}
-            >
+        <ScrollReveal direction="up" delay={0.2}>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project) => (
               <ProjectCard
+                key={project._id}
                 project={project}
                 onClick={() => handleProjectClick(project)}
               />
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {/* Empty state */}
         {filteredProjects.length === 0 && (

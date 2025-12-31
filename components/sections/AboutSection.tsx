@@ -93,7 +93,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left - Image with organic shape */}
           <ScrollReveal direction="left">

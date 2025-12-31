@@ -89,6 +89,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className={`${inter.variable} ${bricolage.variable}`}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -98,7 +99,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased overflow-x-hidden">
         <a href="#main-content" className="skip-to-main">
           Przejdź do głównej treści
         </a>

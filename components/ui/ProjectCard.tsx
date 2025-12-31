@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils/cn'
 import { motion } from 'framer-motion'
@@ -33,6 +33,16 @@ interface ProjectCardProps {
  */
 export default function ProjectCard({ project, onClick, className }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const categoryColors: Record<string, string> = {
     fotografia: 'bg-navy-600',
@@ -50,9 +60,9 @@ export default function ProjectCard({ project, onClick, className }: ProjectCard
         className
       )}
       onClick={onClick}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ y: -8 }}
+      onHoverStart={() => !isMobile && setIsHovered(true)}
+      onHoverEnd={() => !isMobile && setIsHovered(false)}
+      whileHover={isMobile ? {} : { y: -8 }}
       transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
     >
       {/* Image */}

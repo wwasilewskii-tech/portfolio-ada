@@ -100,7 +100,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
 
   return (
     <section id="kontakt" className="bg-navy-900 py-20 text-white">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left - Contact Info */}
           <div className="flex flex-col justify-center">

@@ -30,8 +30,9 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
   const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
-    // Skip smooth scrolling if user prefers reduced motion
-    if (prefersReducedMotion) {
+    // Skip smooth scrolling if user prefers reduced motion or on mobile devices
+    const isMobile = window.innerWidth < 1024
+    if (prefersReducedMotion || isMobile) {
       return
     }
 
