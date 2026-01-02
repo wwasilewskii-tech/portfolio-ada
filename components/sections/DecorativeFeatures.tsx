@@ -14,25 +14,25 @@ export default function DecorativeFeatures() {
       icon: Palette,
       color: 'bg-yellow-100',
       title: 'Wizja artystyczna',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.',
+      text: 'Każdy projekt to opowieść wizualna. Łączę estetykę z funkcjonalnością, tworząc projekty, które zapadają w pamięć.',
     },
     {
       icon: Star,
       color: 'bg-purple-100',
       title: 'Unikalne podejście',
-      text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.',
+      text: 'Nie ma dwóch takich samych projektów. Dostosowuję się do Twoich potrzeb, tworząc rozwiązania szyte na miarę.',
     },
     {
       icon: Heart,
       color: 'bg-blue-100',
       title: 'Pasja w każdym kadrze',
-      text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
+      text: 'Fotografia to nie tylko technika – to emocje i szczegóły. W każdym ujęciu szukam tego, co wyjątkowe.',
     },
     {
       icon: Sparkles,
       color: 'bg-pink-100',
       title: 'Kreatywność bez granic',
-      text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.',
+      text: 'Od ilustracji literackich po design okładek – łączę różne media, by stworzyć spójną całość.',
     },
   ]
 
