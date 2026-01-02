@@ -90,8 +90,7 @@ export default function Hero({ data }: HeroProps) {
 
         <ScrollReveal direction="up" delay={0.8}>
           <p className="mx-auto mb-16 max-w-xl text-lg leading-relaxed text-navy-600">
-            Specjalistka ds. content wizualnego ze Szczecina. Tworzę w obszarach fotografii,
-            grafiki i wideo.
+            Specjalistka ds. content wizualnego ze Szczecina. Tworzę w obszarach fotografii i grafiki.
           </p>
         </ScrollReveal>
 

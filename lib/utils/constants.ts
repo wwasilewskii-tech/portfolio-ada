@@ -72,7 +72,7 @@ export const SOCIAL_LINKS = {
  */
 export const SITE_METADATA = {
   title: 'Adrianna Rauhut - Fotografka, Graficzka',
-  description: 'Portfolio Adrianny Rauhut - specjalistki ds. content wizualnego ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.',
+  description: 'Portfolio Adrianny Rauhut - specjalistki ds. content wizualnego ze Szczecina. Fotografia, grafika, ilustracje literackie, design wizualny.',
   keywords: [
     'fotografia',
     'grafika',
