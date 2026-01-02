@@ -27,9 +27,7 @@ export default function DecorativeCallout() {
                 Szukasz fotografa?
               </h2>
               <p className="mb-8 max-w-md text-lg leading-relaxed text-white/80">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                ad minim veniam, quis nostrud exercitation.
+                Szukasz kogoś, kto zamieni Twoją wizję w obraz? Specjalizuję się w tworzeniu spójnej identyfikacji wizualnej – od fotografii produktowej, przez projekty graficzne. Każdy projekt traktuję indywidualnie, dbając o szczegóły i terminowość. Napisz – chętnie poznam Twoje potrzeby i zaproponuję rozwiązanie szyte na miarę.
               </p>
 
               <MagneticButton
