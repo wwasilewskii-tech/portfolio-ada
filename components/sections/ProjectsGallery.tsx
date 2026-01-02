@@ -82,7 +82,7 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
               Moje Projekty
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-navy-700">
-              Odkryj moją pracę w różnych mediach - fotografia i grafika
+              Od koncepcji do realizacji – moja multimedialna praktyka
             </p>
           </div>
         </ScrollReveal>
