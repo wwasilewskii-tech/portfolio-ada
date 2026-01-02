@@ -52,7 +52,7 @@ export default function DecorativeCallout() {
                   Twórcze ujęcia
                 </h3>
                 <p className="text-sm text-navy-700">
-                  Nietuzinkowe kadry, które przyciągają wzrok. Znajduję piękno tam, gdzie inni go nie dostrzegają.
+                  Obrazy, które mówią same za siebie. Specjalizuję się w uchwyceniu emocji i atmosfery – każde zdjęcie to historia, która czeka na opowiedzenie.
                 </p>
               </div>
             </ScrollReveal>
@@ -68,7 +68,7 @@ export default function DecorativeCallout() {
                   Profesjonalne portfolio
                 </h3>
                 <p className="text-sm text-navy-700">
-                  Wieloletnie doświadczenie w fotografii i grafice. Zrealizowane projekty dla Związku Literatów Polskich i wydawnictw.
+                  Doświadczenie w projektach dla literatury, wydawnictw i brandingu. Od ilustracji po design okładek – kompleksowa realizacja wizji.
                 </p>
               </div>
             </ScrollReveal>
@@ -84,7 +84,7 @@ export default function DecorativeCallout() {
                   Każdy detal ma znaczenie
                 </h3>
                 <p className="text-sm text-navy-700">
-                  Precyzja w kadrze, dbałość o kompozycję i światło. Każdy element służy całości.
+                  Harmonia kolorów, wyważona kompozycja, mistrzowskie światło. Profesjonalizm widoczny w każdym pikselu.
                 </p>
               </div>
             </ScrollReveal>
