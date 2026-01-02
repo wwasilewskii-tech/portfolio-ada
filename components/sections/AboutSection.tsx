@@ -136,17 +136,21 @@ export default function AboutSection({ data }: AboutSectionProps) {
               <div className="mb-8 space-y-4 text-lg text-navy-700">
                 <p>
                   <strong className="text-navy-900">Adrianna Rauhut</strong> –
-                  szczecinianka, fotografka, graficzka.
+                  fotografka, graficzka.
                 </p>
                 <p>
-                  Tworzę w obszarach fotografii, grafiki i wideo. Współpracuję
-                  ze Związkiem Literatów Polskich oraz Uniwizją (Telewizja
-                  Uniwersytetu Szczecińskiego).
+                  Tworzę w obszarach fotografii, grafiki. Współpracuję ze Związkiem Literatów Polskich,
+                  blogiem edisanonimaart.pl oraz firmą Bitemedia.
                 </p>
                 <p>
-                  Moje prace były prezentowane na wystawach w Szczecinie,
-                  zdobyłam II miejsce w konkursie plastycznym podczas
-                  Ogólnopolskiego Festiwalu Wokalno-Plastycznego.
+                  Moje prace były prezentowane na wystawach w Szczecinie: <em>Od miłości do nienawiści – jeden krok</em> (2015, Szczecin Meeting Point),
+                  <em>Interakcje poezja, fotografia, grafika</em> (2015, Klub 12. Szczecińskiej Dywizji Zmechanizowanej),
+                  <em>Poetyckie rusałki</em> (2016, Klub Hormon).
+                </p>
+                <p>
+                  Ilustrowałam tomiki poezji Edyty Rauhut pt. „Roztańczony atrament", „…(nie) z tej bajki", „Łapacz róż".
+                  Projektowałam okładki tomików poezji „Do rozważenia…" (Barbary Moraczewskiej-Jankowskiej) oraz „Z piątego wymiaru…" (Zenona Lacha-Ceraszyńskiego).
+                  Zaprojektowałam okładkę audiobooka radiowego pt. „Zapiski z umierania" Marii Pawlikowskiej-Jasnorzewskiej w opracowaniu Rafała Podrazy (2024).
                 </p>
               </div>
             </ScrollReveal>
