@@ -64,7 +64,7 @@ export const SOCIAL_LINKS = {
   linkedin: '',
   behance: '',
   instagram: '',
-  email: 'adrianna@example.com', // TODO: Update with real email
+  email: 'kontakt@adriannart.pl',
 } as const
 
 /**

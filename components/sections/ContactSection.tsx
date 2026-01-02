@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import MagneticButton from '@/components/animations/MagneticButton'
-import { Mail, Linkedin, Instagram } from 'lucide-react'
 import { cn } from '@/lib/utils/cn'
 
 interface ContactSectionProps {
@@ -80,23 +79,6 @@ export default function ContactSection({ settings }: ContactSectionProps) {
     }
   }
 
-  const socialLinks = [
-    {
-      name: 'Email',
-      icon: Mail,
-      href: `mailto:${settings?.email || 'adrianna@example.com'}`,
-    },
-    {
-      name: 'LinkedIn',
-      icon: Linkedin,
-      href: settings?.linkedin || '#',
-    },
-    {
-      name: 'Instagram',
-      icon: Instagram,
-      href: settings?.instagram || '#',
-    },
-  ]
 
   return (
     <section id="kontakt" className="bg-navy-900 py-20 text-white">
@@ -109,37 +91,21 @@ export default function ContactSection({ settings }: ContactSectionProps) {
                 Skontaktuj się
               </h2>
               <p className="mb-8 text-lg text-navy-200">
-                Masz projekt? Chcesz nawiązać współpracę? Napisz do mnie, a
-                odpowiem najszybciej jak to możliwe.
+                Jeśli szukasz realizatora projektu wizualnego, zapraszam do kontaktu.
               </p>
 
               <div className="mb-8 space-y-4">
                 <div>
                   <h3 className="mb-2 font-semibold">Email</h3>
                   <a
-                    href={`mailto:${settings?.email || 'adrianna@example.com'}`}
+                    href={`mailto:${settings?.email || 'kontakt@adriannart.pl'}`}
                     className="text-yellow-400 hover:underline"
                   >
-                    {settings?.email || 'adrianna@example.com'}
+                    {settings?.email || 'kontakt@adriannart.pl'}
                   </a>
                 </div>
               </div>
 
-              {/* Social Links */}
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-yellow-400 hover:text-navy-900"
-                    aria-label={social.name}
-                  >
-                    <social.icon size={20} />
-                  </a>
-                ))}
-              </div>
             </ScrollReveal>
           </div>
 
