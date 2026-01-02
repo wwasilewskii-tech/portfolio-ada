@@ -8,7 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannart.pl';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Adrianna Rauhut - Fotografka, Graficzka, Operatorka Kamery",
+  title: "Adrianna Rauhut - Fotografka, Graficzka",
   description: "Portfolio Adrianny Rauhut - specjalistki ds. content wizualnego ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.",
   keywords: [
     "fotografia",
@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     "fotografia artystyczna",
     "ilustracje",
     "design okładek",
-    "operatorka kamery",
     "Adrianna Rauhut",
   ],
   openGraph: {
@@ -49,7 +48,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Adrianna Rauhut",
-    "jobTitle": "Fotografka, Graficzka, Operatorka Kamery",
+    "jobTitle": "Fotografka, Graficzka",
     "url": baseUrl,
     "image": `${baseUrl}/adrianna1.jpg`,
     "address": {
@@ -62,7 +61,6 @@ export default function RootLayout({
       "Grafika",
       "Ilustracje Literackie",
       "Design Okładek",
-      "Operatorka Kamery",
       "Fotografia Artystyczna",
       "Fotografia Portretowa"
     ],

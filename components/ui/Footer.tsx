@@ -34,7 +34,7 @@ export default function Footer({ settings }: FooterProps) {
               Adrianna Rauhut
             </h3>
             <p className="text-sm leading-relaxed">
-              Fotografka, Graficzka, Operatorka Kamery
+              Fotografka, Graficzka
             </p>
             <p className="mt-2 text-sm leading-relaxed">
               Specjalistka ds. content wizualnego ze Szczecina specjalizująca się w

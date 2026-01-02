@@ -71,8 +71,8 @@ export const SOCIAL_LINKS = {
  * Site metadata
  */
 export const SITE_METADATA = {
-  title: 'Adrianna Rauhut - Fotografka, Graficzka, Operatorka Kamery',
-  description: 'Portfolio Adrianny Rauhut - artystki multimedialnej ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.',
+  title: 'Adrianna Rauhut - Fotografka, Graficzka',
+  description: 'Portfolio Adrianny Rauhut - specjalistki ds. content wizualnego ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.',
   keywords: [
     'fotografia',
     'grafika',
@@ -80,7 +80,6 @@ export const SITE_METADATA = {
     'fotografia artystyczna',
     'ilustracje',
     'design okładek',
-    'operatorka kamery',
     'Adrianna Rauhut',
   ],
   url: 'https://adriannart.pl',

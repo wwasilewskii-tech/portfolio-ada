@@ -47,10 +47,6 @@ export default function AboutSection({ data }: AboutSectionProps) {
       category: 'Grafika',
       items: ['Ilustracje', 'Design okładek', 'Branding'],
     },
-    {
-      category: 'Video',
-      items: ['Operatorka kamery', 'Animacja', 'Montaż'],
-    },
   ]
 
   const skills = data?.skills || defaultSkills
@@ -140,7 +136,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
               <div className="mb-8 space-y-4 text-lg text-navy-700">
                 <p>
                   <strong className="text-navy-900">Adrianna Rauhut</strong> –
-                  szczecinianka, fotografka, graficzka, operatorka kamery.
+                  szczecinianka, fotografka, graficzka.
                 </p>
                 <p>
                   Tworzę w obszarach fotografii, grafiki i wideo. Współpracuję
