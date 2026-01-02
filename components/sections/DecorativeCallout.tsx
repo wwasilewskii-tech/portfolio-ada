@@ -52,8 +52,7 @@ export default function DecorativeCallout() {
                   Twórcze ujęcia
                 </h3>
                 <p className="text-sm text-navy-700">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore.
+                  Nietuzinkowe kadry, które przyciągają wzrok. Znajduję piękno tam, gdzie inni go nie dostrzegają.
                 </p>
               </div>
             </ScrollReveal>
@@ -69,8 +68,7 @@ export default function DecorativeCallout() {
                   Profesjonalne portfolio
                 </h3>
                 <p className="text-sm text-navy-700">
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt.
+                  Wieloletnie doświadczenie w fotografii i grafice. Zrealizowane projekty dla Związku Literatów Polskich i wydawnictw.
                 </p>
               </div>
             </ScrollReveal>
@@ -86,7 +84,7 @@ export default function DecorativeCallout() {
                   Każdy detal ma znaczenie
                 </h3>
                 <p className="text-sm text-navy-700">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+                  Precyzja w kadrze, dbałość o kompozycję i światło. Każdy element służy całości.
                 </p>
               </div>
             </ScrollReveal>
