@@ -37,8 +37,7 @@ export default function Footer({ settings }: FooterProps) {
               Fotografka, Graficzka
             </p>
             <p className="mt-2 text-sm leading-relaxed">
-              Specjalistka ds. content wizualnego ze Szczecina specjalizująca się w
-              fotografii artystycznej, grafice i projektach video.
+              Specjalistka ds. content wizualnego ze Szczecina. Tworzę w obszarach fotografii artystycznej, grafiki i designu wizualnego.
             </p>
           </div>
 
