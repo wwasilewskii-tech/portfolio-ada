@@ -37,7 +37,7 @@ export default function Footer({ settings }: FooterProps) {
               Fotografka, Graficzka, Operatorka Kamery
             </p>
             <p className="mt-2 text-sm leading-relaxed">
-              Artystka multimedialna ze Szczecina specjalizująca się w
+              Specjalistka ds. content wizualnego ze Szczecina specjalizująca się w
               fotografii artystycznej, grafice i projektach video.
             </p>
           </div>

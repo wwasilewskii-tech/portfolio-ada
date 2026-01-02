@@ -9,7 +9,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://adriannart.pl';
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: "Adrianna Rauhut - Fotografka, Graficzka, Operatorka Kamery",
-  description: "Portfolio Adrianny Rauhut - artystki multimedialnej ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.",
+  description: "Portfolio Adrianny Rauhut - specjalistki ds. content wizualnego ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.",
   keywords: [
     "fotografia",
     "grafika",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Adrianna Rauhut - Portfolio",
-    description: "Artystka multimedialna - fotografia, grafika, video. Współpraca ze Związkiem Literatów Polskich, Uniwizja.",
+    description: "Specjalistka ds. content wizualnego - fotografia, grafika, video. Współpraca ze Związkiem Literatów Polskich, Uniwizja.",
     images: [
       {
         url: `${baseUrl}/logo.png`,
@@ -78,7 +78,7 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "Adrianna Rauhut Portfolio",
     "url": baseUrl,
-    "description": "Portfolio Adrianny Rauhut - artystki multimedialnej ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.",
+    "description": "Portfolio Adrianny Rauhut - specjalistki ds. content wizualnego ze Szczecina. Fotografia, grafika, ilustracje literackie, projekty video.",
     "inLanguage": "pl-PL",
     "author": {
       "@type": "Person",

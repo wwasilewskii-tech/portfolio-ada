@@ -75,7 +75,7 @@ export default function Navigation({ className }: NavigationProps) {
               <p className="font-display text-lg font-bold text-navy-900">
                 Adrianna Rauhut
               </p>
-              <p className="text-xs text-navy-600">Artystka multimedialna</p>
+              <p className="text-xs text-navy-600">Specjalistka ds. content wizualnego</p>
             </div>
           </Link>
 
