@@ -104,7 +104,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
                 style={{ transform: 'rotate(-2deg)' }}
               >
                 <Image
-                  src="/adrianna1.jpg"
+                  src="/adrianna2.jpg"
                   alt="Adrianna Rauhut"
                   fill
                   className="object-cover"
