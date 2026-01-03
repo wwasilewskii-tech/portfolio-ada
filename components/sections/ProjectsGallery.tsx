@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import ProjectCard from '@/components/ui/ProjectCard'
-import ProjectModal from '@/components/ui/ProjectModal'
+import ProjectLightbox from '@/components/ui/ProjectLightbox'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { cn } from '@/lib/utils/cn'
 
@@ -130,8 +130,8 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
         )}
       </div>
 
-      {/* Project Modal */}
-      <ProjectModal
+      {/* Project Lightbox */}
+      <ProjectLightbox
         projectSlug={selectedProjectSlug}
         onClose={handleCloseModal}
         onNavigate={handleNavigateProject}
