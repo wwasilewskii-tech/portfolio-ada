@@ -47,7 +47,7 @@ export default function DecorativeFeatures() {
       <div className="container relative z-10 mx-auto px-6">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
-            <ScrollReveal key={index} direction="up" delay={index * 0.1}>
+            <ScrollReveal key={feature.title} direction="up" delay={index * 0.1}>
               <div
                 className={`group relative overflow-hidden rounded-[2rem] ${feature.color} p-8 transition-transform hover:-translate-y-2`}
                 style={{

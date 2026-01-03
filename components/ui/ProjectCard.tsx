@@ -19,6 +19,7 @@ interface ProjectCardProps {
   }
   onClick?: () => void
   className?: string
+  index?: number
 }
 
 /**
@@ -31,7 +32,7 @@ interface ProjectCardProps {
  * - 3D tilt effect on hover
  * - Category badges
  */
-export default function ProjectCard({ project, onClick, className }: ProjectCardProps) {
+export default function ProjectCard({ project, onClick, className, index = 0 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -75,7 +76,8 @@ export default function ProjectCard({ project, onClick, className }: ProjectCard
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           placeholder="blur"
           blurDataURL={DEFAULT_BLUR_DATA_URL}
-          loading="lazy"
+          priority={index === 0}
+          loading={index === 0 ? 'eager' : 'lazy'}
         />
 
         {/* Subtle overlay on hover */}

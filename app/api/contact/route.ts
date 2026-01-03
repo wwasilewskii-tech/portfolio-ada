@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { z } from 'zod'
 
 // Initialize Resend only if API key is available
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
@@ -9,8 +10,13 @@ const rateLimitMap = new Map<string, number[]>()
 const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 3 // Max 3 requests per minute
 
-// Email validation regex
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+// Zod validation schema
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name is too long'),
+  email: z.string().email('Invalid email format').max(255, 'Email is too long'),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(5000, 'Message is too long'),
+  honeypot: z.string().optional(),
+})
 
 // Escape HTML to prevent XSS
 function escapeHtml(text: string): string {
@@ -59,58 +65,23 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { name, email, message, honeypot } = body
+
+    // Validate with Zod
+    const validationResult = contactSchema.safeParse(body)
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        { error: validationResult.error.errors[0].message },
+        { status: 400 }
+      )
+    }
+
+    const { name, email, message, honeypot } = validationResult.data
 
     // Honeypot check - if filled, it's likely a bot
     if (honeypot) {
       console.log('Honeypot triggered - potential bot detected')
       return NextResponse.json({ success: true }) // Fake success to not alert bots
-    }
-
-    // Validate required fields
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      )
-    }
-
-    // Validate field types
-    if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
-      return NextResponse.json(
-        { error: 'Invalid field types' },
-        { status: 400 }
-      )
-    }
-
-    // Validate field lengths
-    if (name.length < 2 || name.length > 100) {
-      return NextResponse.json(
-        { error: 'Name must be between 2 and 100 characters' },
-        { status: 400 }
-      )
-    }
-
-    if (email.length > 255) {
-      return NextResponse.json(
-        { error: 'Email is too long' },
-        { status: 400 }
-      )
-    }
-
-    if (message.length < 10 || message.length > 5000) {
-      return NextResponse.json(
-        { error: 'Message must be between 10 and 5000 characters' },
-        { status: 400 }
-      )
-    }
-
-    // Validate email format
-    if (!EMAIL_REGEX.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      )
     }
 
     // Sanitize inputs

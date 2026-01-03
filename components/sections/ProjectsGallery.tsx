@@ -1,10 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import ProjectCard from '@/components/ui/ProjectCard'
-import ProjectLightbox from '@/components/ui/ProjectLightbox'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { cn } from '@/lib/utils/cn'
+
+// Dynamic import for ProjectLightbox to reduce initial bundle size
+const ProjectLightbox = dynamic(() => import('@/components/ui/ProjectLightbox'), {
+  ssr: false,
+})
 
 interface Project {
   _id: string
@@ -110,10 +115,11 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
         {/* Projects Grid */}
         <ScrollReveal direction="up" delay={0.2}>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, index) => (
               <ProjectCard
                 key={project._id}
                 project={project}
+                index={index}
                 onClick={() => handleProjectClick(project)}
               />
             ))}
