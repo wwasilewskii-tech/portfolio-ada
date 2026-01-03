@@ -231,18 +231,19 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
                   transition={{ delay: 0.3 }}
                   className="mb-16"
                 >
-                  <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl bg-navy-100">
-                    <div className="relative aspect-[3/4]">
-                      <Image
-                        src={project.coverImageUrl}
-                        alt={project.title}
-                        fill
-                        className="object-contain cursor-pointer"
-                        sizes="(max-width: 1200px) 100vw, 1200px"
-                        priority
-                        onClick={() => handleLightboxOpen(0)}
-                      />
-                    </div>
+                  <div
+                    className="relative mx-auto flex max-w-4xl cursor-pointer items-center justify-center overflow-hidden rounded-2xl bg-navy-100"
+                    onClick={() => handleLightboxOpen(0)}
+                  >
+                    <Image
+                      src={project.coverImageUrl}
+                      alt={project.title}
+                      width={1200}
+                      height={1600}
+                      className="h-auto w-full max-h-[70vh] object-contain"
+                      sizes="(max-width: 1200px) 100vw, 1200px"
+                      priority
+                    />
                   </div>
                 </motion.div>
               )}
@@ -276,14 +277,15 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
                           return (
                             <div
                               key={index}
-                              className="relative aspect-[3/4] cursor-pointer overflow-hidden rounded-lg bg-navy-100 transition-transform hover:scale-[1.02]"
+                              className="cursor-pointer overflow-hidden rounded-lg bg-navy-100 transition-transform hover:scale-[1.02]"
                               onClick={() => handleLightboxOpen(lightboxIndex)}
                             >
                               <Image
                                 src={imageUrl}
                                 alt={`${project.title} - ${index + 1}`}
-                                fill
-                                className="object-contain"
+                                width={800}
+                                height={1067}
+                                className="h-auto w-full object-contain"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                               />
                             </div>
