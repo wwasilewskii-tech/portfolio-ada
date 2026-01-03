@@ -23,6 +23,8 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
   const [project, setProject] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0)
 
   useEffect(() => {
     if (!projectSlug) return
@@ -75,17 +77,52 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowLeft' && onNavigate) onNavigate('prev')
-      if (e.key === 'ArrowRight' && onNavigate) onNavigate('next')
+      if (isLightboxOpen) {
+        // Lightbox navigation
+        if (e.key === 'Escape') {
+          setIsLightboxOpen(false)
+        } else if (e.key === 'ArrowLeft') {
+          handleLightboxPrev()
+        } else if (e.key === 'ArrowRight') {
+          handleLightboxNext()
+        }
+      } else {
+        // Modal navigation
+        if (e.key === 'Escape') onClose()
+        if (e.key === 'ArrowLeft' && onNavigate) onNavigate('prev')
+        if (e.key === 'ArrowRight' && onNavigate) onNavigate('next')
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onClose, onNavigate])
+  }, [onClose, onNavigate, isLightboxOpen, lightboxImageIndex])
 
-  const allImages = project?.galleryImages || []
+  // Combine cover image and gallery images for lightbox
+  const allImages = project
+    ? [
+        ...(project.coverImageUrl ? [project.coverImageUrl] : []),
+        ...(project.galleryImages || [])
+      ]
+    : []
   const hasGallery = allImages.length > 0
+
+  const handleLightboxOpen = (index: number) => {
+    setLightboxImageIndex(index)
+    setIsLightboxOpen(true)
+  }
+
+  const handleLightboxClose = () => {
+    setIsLightboxOpen(false)
+  }
+
+  const handleLightboxNext = () => {
+    setLightboxImageIndex((prev) => (prev + 1) % allImages.length)
+  }
+
+  const handleLightboxPrev = () => {
+    setLightboxImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
+  }
 
   return (
     <AnimatePresence>
@@ -194,15 +231,18 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
                   transition={{ delay: 0.3 }}
                   className="mb-16"
                 >
-                  <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-navy-100">
-                    <Image
-                      src={project.coverImageUrl}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1200px) 100vw, 1200px"
-                      priority
-                    />
+                  <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl bg-navy-100">
+                    <div className="relative aspect-[3/4]">
+                      <Image
+                        src={project.coverImageUrl}
+                        alt={project.title}
+                        fill
+                        className="object-contain cursor-pointer"
+                        sizes="(max-width: 1200px) 100vw, 1200px"
+                        priority
+                        onClick={() => handleLightboxOpen(0)}
+                      />
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -224,26 +264,31 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
                   )}
 
                   {/* Gallery */}
-                  {hasGallery && (
+                  {project.galleryImages && project.galleryImages.length > 0 && (
                     <div className="mt-12 space-y-8">
                       <h3 className="font-display text-2xl font-bold text-navy-900">
                         Galeria
                       </h3>
                       <div className="grid gap-6 sm:grid-cols-2">
-                        {allImages.map((imageUrl: string, index: number) => (
-                          <div
-                            key={index}
-                            className="relative aspect-[4/3] overflow-hidden rounded-lg bg-navy-100"
-                          >
-                            <Image
-                              src={imageUrl}
-                              alt={`${project.title} - ${index + 1}`}
-                              fill
-                              className="object-cover transition-transform hover:scale-105"
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                            />
-                          </div>
-                        ))}
+                        {project.galleryImages.map((imageUrl: string, index: number) => {
+                          // Offset by 1 if coverImage exists
+                          const lightboxIndex = project.coverImageUrl ? index + 1 : index
+                          return (
+                            <div
+                              key={index}
+                              className="relative aspect-[3/4] cursor-pointer overflow-hidden rounded-lg bg-navy-100 transition-transform hover:scale-[1.02]"
+                              onClick={() => handleLightboxOpen(lightboxIndex)}
+                            >
+                              <Image
+                                src={imageUrl}
+                                alt={`${project.title} - ${index + 1}`}
+                                fill
+                                className="object-contain"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                              />
+                            </div>
+                          )
+                        })}
                       </div>
                     </div>
                   )}
@@ -316,6 +361,76 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
             <div className="flex min-h-screen items-center justify-center">
               <p className="text-navy-600">Projekt nie został znaleziony</p>
             </div>
+          )}
+
+          {/* Lightbox */}
+          {isLightboxOpen && hasGallery && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95"
+              onClick={handleLightboxClose}
+            >
+              {/* Close Button */}
+              <button
+                onClick={handleLightboxClose}
+                className="fixed right-6 top-6 z-[110] flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                aria-label="Close lightbox"
+              >
+                <X size={24} />
+              </button>
+
+              {/* Previous Button */}
+              {allImages.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleLightboxPrev()
+                  }}
+                  className="fixed left-6 top-1/2 z-[110] -translate-y-1/2 rounded-full bg-white/10 p-4 text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                  aria-label="Previous image"
+                >
+                  <ArrowLeft size={32} />
+                </button>
+              )}
+
+              {/* Next Button */}
+              {allImages.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleLightboxNext()
+                  }}
+                  className="fixed right-6 top-1/2 z-[110] -translate-y-1/2 rounded-full bg-white/10 p-4 text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                  aria-label="Next image"
+                >
+                  <ArrowRight size={32} />
+                </button>
+              )}
+
+              {/* Image Counter */}
+              {allImages.length > 1 && (
+                <div className="fixed bottom-6 left-1/2 z-[110] -translate-x-1/2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
+                  {lightboxImageIndex + 1} / {allImages.length}
+                </div>
+              )}
+
+              {/* Image */}
+              <div
+                className="relative h-[90vh] w-[90vw]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image
+                  src={allImages[lightboxImageIndex]}
+                  alt={`${project?.title} - ${lightboxImageIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                  priority
+                />
+              </div>
+            </motion.div>
           )}
         </motion.div>
       )}
