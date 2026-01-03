@@ -201,7 +201,10 @@ function ProjectContent({
   return (
     <div className="flex w-full h-full">
       {/* LEFT/CENTER: Scrollable image gallery */}
-      <div className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth">
+      <div
+        className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth overscroll-contain"
+        data-lenis-prevent
+      >
         <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12 py-24 space-y-8">
           {allImages.length > 0 ? (
             allImages.map((imageUrl, index) => (
@@ -236,7 +239,10 @@ function ProjectContent({
       </div>
 
       {/* RIGHT: Metadata sidebar (desktop only) */}
-      <aside className="hidden lg:block w-96 bg-white overflow-y-auto">
+      <aside
+        className="hidden lg:block w-96 bg-white overflow-y-auto overscroll-contain"
+        data-lenis-prevent
+      >
         <div className="sticky top-0 p-8">
           <MetadataSidebar project={project} />
         </div>
@@ -405,7 +411,10 @@ function MobileMetadataDrawer({ project }: { project: ProjectData }) {
             transition={{ duration: 0.3 }}
             className="bg-white overflow-hidden"
           >
-            <div className="p-6 max-h-[60vh] overflow-y-auto">
+            <div
+              className="p-6 max-h-[60vh] overflow-y-auto overscroll-contain"
+              data-lenis-prevent
+            >
               <MetadataSidebar project={project} />
             </div>
           </motion.div>
