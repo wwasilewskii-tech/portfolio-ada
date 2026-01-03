@@ -53,11 +53,11 @@ export default function AnimatedText({
           const chars = word.split('').map((char, charIndex) => (
             `<span key="${wordIndex}-${charIndex}" class="inline-block" style="opacity: 0;">${char}</span>`
           ))
-          return chars.join('') + (wordIndex < words.length - 1 ? '<span class="inline-block">&nbsp;</span>' : '')
+          return `<span class="inline-block whitespace-nowrap">${chars.join('')}</span>` + (wordIndex < words.length - 1 ? '<span class="inline-block">&nbsp;</span>' : '')
         }).join('')
       } else if (type === 'words') {
         return words.map((word, index) => (
-          `<span key="${index}" class="inline-block" style="opacity: 0;">${word}</span>${index < words.length - 1 ? ' ' : ''}`
+          `<span key="${index}" class="inline-block whitespace-nowrap" style="opacity: 0;">${word}</span>${index < words.length - 1 ? ' ' : ''}`
         )).join('')
       }
 
