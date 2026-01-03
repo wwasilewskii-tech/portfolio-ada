@@ -8,6 +8,7 @@ import DecorativeDivider from '@/components/sections/DecorativeDivider'
 import AboutSection from '@/components/sections/AboutSection'
 import DecorativeCallout from '@/components/sections/DecorativeCallout'
 import ContactSection from '@/components/sections/ContactSection'
+import SEOSection from '@/components/sections/SEOSection'
 import Footer from '@/components/ui/Footer'
 import ErrorBoundary from '@/components/ErrorBoundary'
 
@@ -32,6 +33,7 @@ export default async function HomePage() {
         <AboutSection data={aboutData} />
         <DecorativeCallout />
         <ContactSection settings={siteSettings} />
+        <SEOSection />
       </main>
       <Footer settings={siteSettings} />
     </ErrorBoundary>

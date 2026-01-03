@@ -17,7 +17,7 @@ interface HeroProps {
  */
 export default function Hero({ data }: HeroProps) {
   const title = data?.heroTitle || 'Adrianna Rauhut'
-  const subtitle = 'Fotografka • Graficzka'
+  const subtitle = 'Fotografka i Graficzka Szczecin'
 
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projekty')

@@ -101,7 +101,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
               >
                 <Image
                   src="/adrianna2.jpg"
-                  alt="Adrianna Rauhut"
+                  alt="Adrianna Rauhut - Fotografka i Graficzka ze Szczecina"
                   fill
                   className="object-cover"
                   placeholder="blur"
