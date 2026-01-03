@@ -67,12 +67,14 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
   }, [projectSlug])
 
   useEffect(() => {
-    // Prevent body scroll when modal is open
-    document.body.style.overflow = 'hidden'
+    // Prevent body scroll when modal is open, but allow modal content to scroll
+    if (projectSlug) {
+      document.body.style.overflow = 'hidden'
+    }
     return () => {
       document.body.style.overflow = 'unset'
     }
-  }, [])
+  }, [projectSlug])
 
   // Keyboard navigation
   useEffect(() => {
@@ -117,11 +119,15 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
   }
 
   const handleLightboxNext = () => {
-    setLightboxImageIndex((prev) => (prev + 1) % allImages.length)
+    if (allImages.length > 0) {
+      setLightboxImageIndex((prev) => (prev + 1) % allImages.length)
+    }
   }
 
   const handleLightboxPrev = () => {
-    setLightboxImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
+    if (allImages.length > 0) {
+      setLightboxImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
+    }
   }
 
   return (
@@ -136,7 +142,7 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="fixed right-6 top-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-navy-900/10 text-navy-900 backdrop-blur-sm transition-all hover:bg-navy-900 hover:text-white"
+            className="fixed right-6 top-6 z-[60] flex h-12 w-12 items-center justify-center rounded-full bg-navy-900/10 text-navy-900 backdrop-blur-sm transition-all hover:bg-navy-900 hover:text-white"
             aria-label="Close"
           >
             <X size={24} />
@@ -147,14 +153,14 @@ export default function ProjectModal({ projectSlug, onClose, onNavigate }: Proje
             <>
               <button
                 onClick={() => onNavigate('prev')}
-                className="fixed left-6 top-1/2 z-50 -translate-y-1/2 rounded-full bg-navy-900/10 p-3 backdrop-blur-sm transition-all hover:bg-navy-900 hover:text-white"
+                className="fixed left-6 top-1/2 z-[60] -translate-y-1/2 rounded-full bg-navy-900/10 p-3 backdrop-blur-sm transition-all hover:bg-navy-900 hover:text-white"
                 aria-label="Previous project"
               >
                 <ArrowLeft size={24} />
               </button>
               <button
                 onClick={() => onNavigate('next')}
-                className="fixed right-6 top-1/2 z-50 -translate-y-1/2 rounded-full bg-navy-900/10 p-3 backdrop-blur-sm transition-all hover:bg-navy-900 hover:text-white"
+                className="fixed right-6 top-1/2 z-[60] -translate-y-1/2 rounded-full bg-navy-900/10 p-3 backdrop-blur-sm transition-all hover:bg-navy-900 hover:text-white"
                 aria-label="Next project"
               >
                 <ArrowRight size={24} />
